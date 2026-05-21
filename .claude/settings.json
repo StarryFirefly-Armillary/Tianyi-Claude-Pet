@@ -1,0 +1,58 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "command",
+          "command": "powershell -Command \"if (-not (Get-Process -Name 'luotianyi-pet' -ErrorAction SilentlyContinue)) { Start-Process '<PATH_TO>/src-tauri/target/release/luotianyi-pet.exe' }\""
+        }]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "http",
+          "url": "http://127.0.0.1:9527/api/hook/thinking"
+        }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "http",
+          "url": "http://127.0.0.1:9527/api/hook/working"
+        }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "http",
+          "url": "http://127.0.0.1:9527/api/hook/done"
+        }]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "http",
+          "url": "http://127.0.0.1:9527/api/hook/idle"
+        }]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [{
+          "type": "http",
+          "url": "http://127.0.0.1:9527/api/hook/permission"
+        }]
+      }
+    ]
+  }
+}

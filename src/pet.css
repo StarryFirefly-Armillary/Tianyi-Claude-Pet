@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+#pet-wrapper {
+  width: 720px;
+  height: 520px;
+  zoom: var(--scale, 0.333);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#sprite {
+  width: 428px;
+  height: 376px;
+  background-image: url('luotianyi.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  flex-shrink: 0;
+  position: relative;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ---- animation states ---- */
+
+#sprite[data-anim="idle"]        { animation: anim-idle-all 10s ease-in-out infinite; }
+#sprite[data-anim="idle2"]       { animation: anim-idle-all 10s ease-in-out infinite; }
+#sprite[data-anim="idle3"]       { animation: anim-idle-all 10s ease-in-out infinite; }
+#sprite[data-anim="waiting"]     { animation: anim-waiting 1.8s ease-in-out infinite; }
+#sprite[data-anim="running"]     { animation: anim-running 0.8s ease-in-out infinite; }
+#sprite[data-anim="review"]      { animation: anim-review 2s ease-in-out infinite; }
+#sprite[data-anim="failed"]      { animation: anim-failed 0.6s ease-in-out infinite; }
+#sprite[data-anim="waving"]      { animation: anim-waving 1.2s ease-in-out infinite; }
+#sprite[data-anim="jumping"]     { animation: anim-jumping 1.5s ease-in-out infinite; }
+#sprite[data-anim="chatting"]    { animation: anim-chatting 1.5s ease-in-out infinite; }
+#sprite[data-anim="fetching"]    { animation: anim-fetching 1.2s ease-in-out infinite; }
+#sprite[data-anim="searching"]   { animation: anim-searching 1.4s ease-in-out infinite; }
+#sprite[data-anim="analyzing"]   { animation: anim-analyzing 2s ease-in-out infinite; }
+#sprite[data-anim="building"]    { animation: anim-building 1s ease-in-out infinite; }
+#sprite[data-anim="celebrating"] { animation: anim-celebrating 1.6s ease-in-out infinite; }
+
+/* ---- @keyframes ---- */
+
+@keyframes anim-idle-all {
+  0%   { transform: translateY(0) rotate(0deg); }
+  5%   { transform: translateY(-5px) rotate(0deg); }
+  10%  { transform: translateY(0) rotate(0deg); }
+  15%  { transform: translateY(-4px) rotate(-1deg); }
+  20%  { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-3px) rotate(1.5deg); }
+  35%  { transform: translateY(-5px) rotate(-1.5deg); }
+  45%  { transform: translateY(-2px) rotate(1deg); }
+  50%  { transform: translateY(-4px) rotate(0deg); }
+  60%  { transform: translateY(-3px) rotate(-2.5deg); }
+  70%  { transform: translateY(-1px) rotate(0deg); }
+  75%  { transform: translateY(-4px) rotate(2.5deg); }
+  85%  { transform: translateY(-2px) rotate(0deg); }
+  95%  { transform: translateY(-5px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes anim-waiting {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-2deg) translateY(-3px); }
+  75% { transform: rotate(2deg) translateY(3px); }
+}
+
+@keyframes anim-running {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-14px); }
+  60% { transform: translateY(-4px); }
+}
+
+@keyframes anim-review {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-24px) scale(1.05); }
+  50% { transform: translateY(-24px) scale(1.05); }
+  70% { transform: translateY(0) scale(0.95); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes anim-failed {
+  0%, 100% { transform: translateX(0); }
+  10%, 50%, 90% { transform: translateX(-8px); }
+  30%, 70% { transform: translateX(8px); }
+}
+
+@keyframes anim-waving {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+@keyframes anim-jumping {
+  0%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-5px); }
+  40% { transform: translateY(-48px); }
+  55% { transform: translateY(-48px); }
+  75% { transform: translateY(-5px); }
+}
+
+@keyframes anim-chatting {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes anim-fetching {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(2deg); }
+  66% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+@keyframes anim-searching {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-8px) translateY(-6px); }
+  75% { transform: translateX(8px) translateY(-6px); }
+}
+
+@keyframes anim-analyzing {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-3deg) translateY(-8px); }
+  50% { transform: rotate(0deg) translateY(-4px); }
+  75% { transform: rotate(3deg) translateY(-8px); }
+}
+
+@keyframes anim-building {
+  0%, 100% { transform: translateY(0); }
+  20% { transform: translateY(-16px); }
+  40% { transform: translateY(0); }
+  60% { transform: translateY(-10px); }
+  80% { transform: translateY(-3px); }
+}
+
+@keyframes anim-celebrating {
+  0% { transform: translateY(0) scale(1); }
+  15% { transform: translateY(-10px) scale(1.02); }
+  40% { transform: translateY(-35px) scale(1.08); }
+  55% { transform: translateY(-35px) scale(1.08); }
+  75% { transform: translateY(0) scale(0.95); }
+  90% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ---- bubble ---- */
+
+#bubble {
+  position: absolute;
+  bottom: 420px;
+  left: 43%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: calc(50px / var(--scale, 0.333));
+  padding: calc(8px / var(--scale, 0.333)) calc(14px / var(--scale, 0.333));
+  font-size: calc(13px / var(--scale, 0.333));
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: #1e293b;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+}
+
+#bubble.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+#bubble.visible {
+  opacity: 1;
+}
+
+#bubble.fade-out {
+  opacity: 0;
+}
+
+#bubble.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+#bubble.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#bubble.fade-out {
+  opacity: 0;
+}
